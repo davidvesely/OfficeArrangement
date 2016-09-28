@@ -1,0 +1,14 @@
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\obj\Debug\OfficeArrangement.Tests.csprojResolveAssemblyReference.cache
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\OfficeArrangement.Tests.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\OfficeArrangement.Tests.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\OfficeArrangament.Common.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiCore.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiWpf.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\OfficeArrangament.Common.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiCore.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiCore.xml
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiWpf.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\bin\Debug\TestApiWpf.xml
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\obj\Debug\OfficeArrangement.Tests.dll
+C:\Projects\OfficeArrangement\OfficeArrangement.Tests\obj\Debug\OfficeArrangement.Tests.pdb

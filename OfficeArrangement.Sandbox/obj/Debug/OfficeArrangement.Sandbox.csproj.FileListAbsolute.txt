@@ -1,1 +1,8 @@
 C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\bin\Debug\OfficeArrangement.Sandbox.exe.config
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\bin\Debug\OfficeArrangement.Sandbox.exe
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\bin\Debug\OfficeArrangement.Sandbox.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.csprojResolveAssemblyReference.cache
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.Properties.Resources.resources
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.csproj.GenerateResource.Cache
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.exe
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.pdb

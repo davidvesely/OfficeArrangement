@@ -1,0 +1,5 @@
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\obj\Debug\OfficeArrangament.Common.csprojResolveAssemblyReference.cache
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\bin\Debug\OfficeArrangament.Common.dll
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\bin\Debug\OfficeArrangament.Common.pdb
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\obj\Debug\OfficeArrangament.Common.dll
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\obj\Debug\OfficeArrangament.Common.pdb
