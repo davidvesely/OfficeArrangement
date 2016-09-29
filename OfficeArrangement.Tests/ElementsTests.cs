@@ -9,34 +9,45 @@ namespace OfficeArrangement.Tests
     [TestClass]
     public class ElementsTests
     {
-        //private 
+        private Bitmap GetColorFilledBitmap(int width, Color color)
+        {
+            Rectangle rectangle = new Rectangle(0, 0, width, width);
+            Bitmap bitmap = new Bitmap(250, 250);
+            using (Graphics graphics = Graphics.FromImage(bitmap))
+            {
+                Brush brush = new SolidBrush(Color.White);
+                graphics.FillRectangle(brush, rectangle);
+            }
+            return bitmap;
+        }
+
+        private bool AreEqualImages(Snapshot expected, Snapshot actual, ColorDifference colorDifference = null)
+        {
+            if (colorDifference == null)
+            {
+                colorDifference = new ColorDifference();
+            }
+
+            // Difference should be black image with no tollerance
+            Snapshot difference = actual.CompareTo(expected);
+            SnapshotVerifier verifier = new SnapshotColorVerifier(Color.Black, colorDifference);
+            return verifier.Verify(difference) != VerificationResult.Fail;
+        }
 
         [TestMethod]
         public void FreeSpace_filled_with_white()
         {
             int width = 250;
-            Rectangle rectangle = new Rectangle(0, 0, width, width);
-            Bitmap expectedBmp = new Bitmap(250, 250);
-            using (Graphics graphics = Graphics.FromImage(expectedBmp))
-            {
-                Brush brush = new SolidBrush(Color.White);
-                graphics.FillRectangle(brush, rectangle);
-            }
+            Bitmap expectedBmp = GetColorFilledBitmap(width, Color.White);
             Snapshot expected = Snapshot.FromBitmap(expectedBmp);
 
             // Act
-            FreeSpace freeSpace = new FreeSpace();
-            Bitmap actualBmp = freeSpace.Draw(width);
+            FreeSpace freeSpace = new FreeSpace(width);
+            Bitmap actualBmp = freeSpace.Draw();
             Snapshot actual = Snapshot.FromBitmap(actualBmp);
 
             // Assert
-            Snapshot difference = actual.CompareTo(expected);
-            // Difference should be black image with no tollerance
-            SnapshotVerifier verifier = new SnapshotColorVerifier(Color.Black, new ColorDifference());
-            if (verifier.Verify(difference) == VerificationResult.Fail)
-            {
-                Assert.Fail("Expected image is not white");
-            }
+            Assert.IsTrue(AreEqualImages(expected, actual), "Expected image is not white");
         }
     }
 }

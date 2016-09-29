@@ -45,17 +45,24 @@
     <Compile Include="Enumerations\Brand.cs" />
     <Compile Include="Enumerations\ElementType.cs" />
     <Compile Include="Enumerations\Palette.cs" />
-    <Compile Include="Enumerations\Shape.cs" />
     <Compile Include="Elements\FreeSpace.cs" />
     <Compile Include="Elements\Furniture\Chair.cs" />
     <Compile Include="Elements\Furniture\Furniture.cs" />
     <Compile Include="Elements\Interior\Flowers.cs" />
     <Compile Include="Elements\Interior\Interior.cs" />
     <Compile Include="Elements\Interior\Pathway.cs" />
+    <Compile Include="Images\ImageNames.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Elements\Furniture\Table.cs" />
     <Compile Include="Elements\Tile.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\ChairHermanMiller.png" />
+    <EmbeddedResource Include="Images\ChairWilkhahn.png" />
+    <EmbeddedResource Include="Images\TableHermanMiller.png" />
+    <EmbeddedResource Include="Images\TableWilkhahn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,3 +6,4 @@ C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangem
 C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.csproj.GenerateResource.Cache
 C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.exe
 C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.pdb
+C:\Projects\OfficeArrangement\OfficeArrangement.Sandbox\obj\Debug\OfficeArrangement.Sandbox.Form1.resources

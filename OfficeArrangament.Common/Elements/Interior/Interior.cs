@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OfficeArrangament.Common.Enumerations;
-using System.Drawing;
+﻿using OfficeArrangament.Common.Enumerations;
 
 namespace OfficeArrangament.Common.Interior
 {
-    public class Interior : FreeSpace
+    public abstract class Interior : FreeSpace
     {
         private Palette _palette;
         public virtual Palette Palette
@@ -17,8 +11,8 @@ namespace OfficeArrangament.Common.Interior
             set { _palette = value; }
         }
 
-        public Interior(ElementType type)
-            : base(type)
+        public Interior(ElementType type, int width)
+            : base(type, width)
         {
         }
     }

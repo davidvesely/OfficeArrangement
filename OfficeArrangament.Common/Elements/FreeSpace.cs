@@ -1,9 +1,4 @@
 ﻿using OfficeArrangament.Common.Enumerations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
 namespace OfficeArrangament.Common
@@ -12,30 +7,28 @@ namespace OfficeArrangament.Common
     {
         protected Color Color { get; set; } = Color.White;
 
-        public FreeSpace() : base(ElementType.Free)
+        protected int Width { get; private set; }
+
+        public FreeSpace(int width) : base(ElementType.Free)
         {
+            Width = width;
         }
 
-        public FreeSpace(ElementType type) : base(type)
+        public FreeSpace(ElementType type, int width) : base(type)
         {
+            Width = width;
         }
 
-        protected override void DrawGraphics(Graphics graph, int width)
+        public override Bitmap Draw()
         {
-            Brush brush = new SolidBrush(this.Color);
-            Fill(graph, brush, width);
-        }
-
-        /// <summary>
-        /// Auxiliary method for drawing color filled elements
-        /// </summary>
-        /// <param name="graph"></param>
-        /// <param name="brush"></param>
-        /// <param name="width"></param>
-        private void Fill(Graphics graph, Brush brush, int width)
-        {
-            Rectangle imageSize = new Rectangle(0, 0, width, width);
-            graph.FillRectangle(brush, imageSize);
+            Bitmap bmp = new Bitmap(Width, Width);
+            using (Graphics graph = Graphics.FromImage(bmp))
+            {
+                Brush brush = new SolidBrush(Color);
+                Rectangle imageSize = new Rectangle(0, 0, Width, Width);
+                graph.FillRectangle(brush, imageSize);
+            }
+            return bmp;
         }
     }
 }

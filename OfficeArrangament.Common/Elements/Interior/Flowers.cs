@@ -9,7 +9,7 @@ namespace OfficeArrangament.Common.Interior
 {
     public class Flowers : Interior
     {
-        public Flowers() : base(ElementType.Flowers)
+        public Flowers(int width) : base(ElementType.Flowers, width)
         {
         }
 
@@ -21,10 +21,10 @@ namespace OfficeArrangament.Common.Interior
                 switch (value)
                 {
                     case Palette.Light:
-                        this.Color = System.Drawing.Color.Purple;
+                        Color = System.Drawing.Color.Purple;
                         break;
                     case Palette.Dark:
-                        this.Color = System.Drawing.Color.Green;
+                        Color = System.Drawing.Color.Green;
                         break;
                     default:
                         throw new NotImplementedException(value.ToString());

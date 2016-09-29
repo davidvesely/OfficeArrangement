@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OfficeArrangament.Common.Enumerations;
+using OfficeArrangament.Common.Images;
 
 namespace OfficeArrangament.Common
 {
@@ -12,33 +8,25 @@ namespace OfficeArrangament.Common
     {
         public Table() : base(ElementType.Table)
         {
-
+            NotOccupiedImageName = ImageNames.TableEmpty;
         }
 
         public override Brand Brand
         {
             set
             {
-                base.Brand = value;
                 switch (value)
                 {
                     case Brand.HermanMiller:
-                        this.Color = System.Drawing.Color.Blue;
-                        this.Shape = Shape.Circle;
+                        OccupiedImageName = ImageNames.TableHermanMiller;
                         break;
                     case Brand.Wilkhahn:
-                        this.Color = System.Drawing.Color.Red;
-                        this.Shape = Shape.Hexagon;
+                        OccupiedImageName = ImageNames.TableWilkhahn;
                         break;
                     default:
                         throw new NotImplementedException(value.ToString());
                 }
             }
-        }
-
-        protected override void DrawGraphics(Graphics graph, int width)
-        {
-            throw new NotImplementedException();
         }
     }
 }
