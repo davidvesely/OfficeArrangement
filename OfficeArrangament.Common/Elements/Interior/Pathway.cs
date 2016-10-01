@@ -1,7 +1,7 @@
 ﻿using System;
 using OfficeArrangament.Common.Enumerations;
 
-namespace OfficeArrangament.Common.Interior
+namespace OfficeArrangament.Common
 {
     public class Pathway : Interior
     {
@@ -13,7 +13,6 @@ namespace OfficeArrangament.Common.Interior
         {
             set
             {
-                base.Palette = value;
                 switch (value)
                 {
                     case Palette.Light:

@@ -16,6 +16,8 @@ namespace OfficeArrangament.Common
         public Furniture(ElementType type)
             : base(type)
         {
+            // Default brand
+            Brand = Brand.HermanMiller;
         }
 
         public override Bitmap Draw()

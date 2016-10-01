@@ -1,5 +1,4 @@
 ﻿using OfficeArrangament.Common.Enumerations;
-using OfficeArrangament.Common.Interior;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,36 +20,55 @@ namespace OfficeArrangament.Common
             { 'F', typeof(Flowers) }
         };
 
-        private readonly int _mapWidth, _mapHeight;
+        private int _mapWidth, _mapHeight;
+        public int Width => _mapWidth;
+        public int Height => _mapHeight;
 
-        private readonly Tile[,] _mapContent;
+        private Tile[,] _mapContent;
         public Tile[,] MapContent => _mapContent;
 
         public Brand FurnitureBrand { get; set; }
 
         public Palette Palette { get; set; }
 
-        public Map(int mapWidth, int mapHeight)
-        {
-            _mapWidth = mapWidth;
-            _mapHeight = mapHeight;
-            _mapContent = new Tile[mapWidth, mapHeight];
-        }
+        public bool IsMapLoaded => _mapContent != null;
 
         public void LoadData(string content)
         {
             using (StringReader reader = new StringReader(content))
             {
-                int row = 0, col = 0;
-                string line;
                 Type tileType;
+                Tile[] row;
+                List<Tile[]> map = new List<Tile[]>(MaxMapSize);
+                int rowLengthCurrent;
+                int columnIndex;
+                bool isFirstRow = true;
+                string line;
+
+                // Rows
+                _mapHeight = 0;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    if (line.Length > MaxMapSize)
+                    rowLengthCurrent = line.Length;
+                    if (rowLengthCurrent > MaxMapSize)
                     {
                         throw new Exception("Unsupported map width");
                     }
 
+                    // Check row length consistency of rows
+                    if (isFirstRow)
+                    {
+                        _mapWidth = rowLengthCurrent;
+                    }
+                    else if (rowLengthCurrent != _mapWidth)
+                    {
+                        throw new Exception("Inconsistent row length");
+                    }
+
+                    row = new Tile[_mapWidth];
+                    columnIndex = 0;
+
+                    // Columns
                     foreach (char element in line)
                     {
                         if (!_tileTypes.TryGetValue(element, out tileType))
@@ -58,30 +76,107 @@ namespace OfficeArrangament.Common
                             throw new Exception($"Unknown map element {element}");
                         }
 
-                        object[] args = null;
-                        if (tileType.IsSubclassOf(typeof(FreeSpace))
+                        if (tileType == typeof(FreeSpace) || tileType.IsSubclassOf(typeof(FreeSpace)))
                         {
-                            args = new object[] { TileWidth };
+                            row[columnIndex] = (Tile)Activator.CreateInstance(tileType, TileWidth);
                         }
-                        _mapContent[row, col] = (Tile)Activator.CreateInstance(tileType, args);
+                        else
+                        {
+                            row[columnIndex] = (Tile)Activator.CreateInstance(tileType);
+                        }
+
+                        columnIndex++;
+                    }
+
+                    map.Add(row);
+                    _mapHeight++;
+
+                    if (_mapHeight > MaxMapSize)
+                    {
+                        throw new Exception("Unsupported map height");
                     }
                 }
+
+                _mapContent = map.To2DArray();
             }
         }
 
         public void ChangeBrand(Brand brand)
         {
+            CheckMapIsLoaded();
 
+            ProcessTiles((tile, x, y) =>
+            {
+                if (tile is Furniture)
+                {
+                    ((Furniture)tile).Brand = brand;
+                }
+            });
         }
 
         public void ChangePalette(Palette palette)
         {
+            CheckMapIsLoaded();
 
+            ProcessTiles((tile, x, y) =>
+            {
+                if (tile is Interior)
+                {
+                    ((Interior)tile).Palette = palette;
+                }
+            });
         }
 
         public Bitmap Draw()
         {
+            CheckMapIsLoaded();
+            int width = TileWidth * _mapWidth;
+            int height = TileWidth * _mapHeight;
+            Bitmap image = new Bitmap(width, height);
+
+            using (Graphics graph = Graphics.FromImage(image))
+            {
+                // Prefill with black to see if there are any errors
+                Rectangle allSize = new Rectangle(0, 0, _mapWidth * TileWidth, _mapHeight * TileWidth);
+                Brush brush = new SolidBrush(Color.Black);
+                graph.FillRectangle(brush, allSize);
+
+                ProcessTiles((tile, x, y) =>
+                {
+                    Bitmap tileImage = tile.Draw();
+                    Point location = new Point(x * TileWidth, y * TileWidth);
+                    graph.DrawImage(tileImage, location);
+                });
+            }
+
+            return image;
+        }
+
+        public Bitmap ToggleFurniture(int x, int y)
+        {
+            CheckMapIsLoaded();
+
             throw new NotImplementedException();
+        }
+
+        private void ProcessTiles(Action<Tile, int, int> action)
+        {
+            for (int x = 0; x < _mapWidth; x++)
+            {
+                for (int y = 0; y < _mapHeight; y++)
+                {
+                    // Screen coordinate system is opposite to the array indexing
+                    action(_mapContent[y, x], x, y);
+                }
+            }
+        }
+
+        private void CheckMapIsLoaded()
+        {
+            if (_mapContent == null)
+            {
+                throw new Exception("Load the map first");
+            }
         }
     }
 }

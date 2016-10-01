@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OfficeArrangament.Common.Enumerations;
 
-namespace OfficeArrangament.Common.Interior
+namespace OfficeArrangament.Common
 {
     public class Flowers : Interior
     {
@@ -17,7 +13,6 @@ namespace OfficeArrangament.Common.Interior
         {
             set
             {
-                base.Palette = value;
                 switch (value)
                 {
                     case Palette.Light:
