@@ -1,0 +1,4 @@
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\bin\Release\OfficeArrangament.Common.dll
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\bin\Release\OfficeArrangament.Common.pdb
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\obj\Release\OfficeArrangament.Common.dll
+C:\Projects\OfficeArrangement\OfficeArrangament.Common\obj\Release\OfficeArrangament.Common.pdb

@@ -53,6 +53,7 @@
     <Compile Include="Elements\Interior\Flowers.cs" />
     <Compile Include="Elements\Interior\Interior.cs" />
     <Compile Include="Elements\Interior\Pathway.cs" />
+    <Compile Include="ImageIndex.cs" />
     <Compile Include="Images\ImageNames.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

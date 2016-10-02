@@ -16,6 +16,12 @@ namespace OfficeArrangament.Common
             return new Bitmap(resource);
         }
 
+        public static Bitmap GetEmbeddedImage(string resourceName, Type type)
+        {
+            Stream resource = Assembly.GetAssembly(type).GetManifestResourceStream(resourceName);
+            return new Bitmap(resource);
+        }
+
         /// <summary>
         /// Converts source to 2D array.
         /// </summary>
@@ -53,7 +59,12 @@ namespace OfficeArrangament.Common
             return result;
         }
 
-        public static string LoadFile(string path)
+        /// <summary>
+        /// Read a file and check if it is in text format
+        /// </summary>
+        /// <param name="path">File's location</param>
+        /// <returns>File's content</returns>
+        public static string LoadTextFile(string path)
         {
             if (!File.Exists(path))
             {
@@ -73,22 +84,6 @@ namespace OfficeArrangament.Common
         private static bool IsBinary(string content)
         {
             return content.Any(ch => char.IsControl(ch) && ch != '\r' && ch != '\n');
-        }
-
-        public static BitmapImage ToBitmapImage(this Bitmap bitmap)
-        {
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
-
-                return bitmapimage;
-            }
         }
     }
 }

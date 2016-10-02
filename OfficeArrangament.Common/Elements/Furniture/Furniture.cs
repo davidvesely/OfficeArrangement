@@ -20,6 +20,11 @@ namespace OfficeArrangament.Common
             Brand = Brand.HermanMiller;
         }
 
+        public void ToggleIsOccupied()
+        {
+            IsOccupied = !IsOccupied;
+        }
+
         public override Bitmap Draw()
         {
             string resourceName;

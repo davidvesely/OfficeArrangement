@@ -25,9 +25,13 @@ namespace OfficeArrangament.Common
         public int Height => _mapHeight;
 
         private Tile[,] _mapContent;
+
+        /// <summary>
+        /// Map of the office workspace
+        /// </summary>
         public Tile[,] MapContent => _mapContent;
 
-        public Bitmap _image { get; private set; }
+        private Bitmap _image { get; set; }
 
         public Brand FurnitureBrand { get; set; }
 
@@ -35,6 +39,10 @@ namespace OfficeArrangament.Common
 
         public bool IsMapLoaded => _mapContent != null;
 
+        /// <summary>
+        /// Load map's data from provided text based map
+        /// </summary>
+        /// <param name="content">Content based on character representation</param>
         public void LoadData(string content)
         {
             using (StringReader reader = new StringReader(content))
@@ -104,6 +112,10 @@ namespace OfficeArrangament.Common
             }
         }
 
+        /// <summary>
+        /// Change brand of office furniture
+        /// </summary>
+        /// <param name="brand">Desired brand</param>
         public void ChangeBrand(Brand brand)
         {
             CheckMapIsLoaded();
@@ -117,6 +129,10 @@ namespace OfficeArrangament.Common
             });
         }
 
+        /// <summary>
+        /// Change palette of office interior
+        /// </summary>
+        /// <param name="palette">Desired palette</param>
         public void ChangePalette(Palette palette)
         {
             CheckMapIsLoaded();
@@ -130,6 +146,10 @@ namespace OfficeArrangament.Common
             });
         }
 
+        /// <summary>
+        /// Represent office's map in a bitmap image, suitable for screen visualization
+        /// </summary>
+        /// <returns>Bitmap representation of office's map</returns>
         public Bitmap Draw()
         {
             CheckMapIsLoaded();
@@ -156,11 +176,22 @@ namespace OfficeArrangament.Common
             return image;
         }
 
-        public Bitmap ToggleFurniture(int x, int y)
+        /// <summary>
+        /// Place of remove furniture from given location at the map
+        /// </summary>
+        /// <param name="location">Coordinates of the choosen location</param>
+        public void ToggleFurniture(Point location)
         {
             CheckMapIsLoaded();
 
-            throw new NotImplementedException();
+            ImageIndex index = GetImageIndex(location);
+            Tile tile = _mapContent[index.Row, index.Col];
+
+            Furniture furnitureTile = tile as Furniture;
+            if (furnitureTile != null)
+            {
+                furnitureTile.ToggleIsOccupied();
+            }
         }
 
         private void ProcessTiles(Action<Tile, int, int> action)
@@ -181,6 +212,46 @@ namespace OfficeArrangament.Common
             {
                 throw new Exception("Load the map first");
             }
+        }
+
+        /// <summary>
+        /// Check if tile at the given location is furniture type or not
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public bool CheckIsFurniture(Point location)
+        {
+            ImageIndex index = GetImageIndex(location);
+            Tile tile = _mapContent[index.Row, index.Col];
+            return tile is Furniture;
+        }
+
+        /// <summary>
+        /// Get the top corner coordinates of a tile to which belongs the given location
+        /// </summary>
+        /// <param name="location">Location from the map's image</param>
+        /// <returns>The top corner of the coresponding tile</returns>
+        public Point GetTileTopCornerLocation(Point location)
+        {
+            ImageIndex index = GetImageIndex(location);
+            int x = index.Col * TileWidth;
+            int y = index.Row * TileWidth;
+            return new Point(x, y);
+        }
+
+        // Get the index of the image, based on a location from the map
+        private ImageIndex GetImageIndex(Point location)
+        {
+            CheckMapIsLoaded();
+
+            if (location.X > _image.Width || location.Y > _image.Height)
+            {
+                throw new Exception("Given point is outside the map's image");
+            }
+
+            int row = location.Y / TileWidth;
+            int col = location.X / TileWidth;
+            return new ImageIndex(row, col);
         }
     }
 }

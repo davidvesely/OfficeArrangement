@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeArrangament.Common", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeArrangement.Tests", "OfficeArrangement.Tests\OfficeArrangement.Tests.csproj", "{3EE77367-5702-490A-A6F1-516C75DEDDD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeArrangement.Sandbox", "OfficeArrangement.Sandbox\OfficeArrangement.Sandbox.csproj", "{C05FFA4D-33FB-4F25-AB1B-391464759F23}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeArrangement.UI", "OfficeArrangement.UI\OfficeArrangement.UI.csproj", "{BF635FF1-F353-41A0-8B3B-B85980A0AE42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OfficeArrangement.UI", "OfficeArrangement.UI\OfficeArrangement.UI.csproj", "{C05FFA4D-33FB-4F25-AB1B-391464759F23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{C05FFA4D-33FB-4F25-AB1B-391464759F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C05FFA4D-33FB-4F25-AB1B-391464759F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C05FFA4D-33FB-4F25-AB1B-391464759F23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF635FF1-F353-41A0-8B3B-B85980A0AE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF635FF1-F353-41A0-8B3B-B85980A0AE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF635FF1-F353-41A0-8B3B-B85980A0AE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF635FF1-F353-41A0-8B3B-B85980A0AE42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
