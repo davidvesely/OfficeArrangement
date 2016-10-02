@@ -27,6 +27,8 @@ namespace OfficeArrangament.Common
         private Tile[,] _mapContent;
         public Tile[,] MapContent => _mapContent;
 
+        public Bitmap _image { get; private set; }
+
         public Brand FurnitureBrand { get; set; }
 
         public Palette Palette { get; set; }
@@ -59,6 +61,7 @@ namespace OfficeArrangament.Common
                     if (isFirstRow)
                     {
                         _mapWidth = rowLengthCurrent;
+                        isFirstRow = false;
                     }
                     else if (rowLengthCurrent != _mapWidth)
                     {
@@ -149,6 +152,7 @@ namespace OfficeArrangament.Common
                 });
             }
 
+            _image = image;
             return image;
         }
 

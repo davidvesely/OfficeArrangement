@@ -85,7 +85,7 @@ namespace OfficeArrangement.Tests
             // Arrange
             string content =
                 "FFTTCC\n" +
-                "PPFFXXF\n" +
+                "PPFFXXFF\n" +
                 "TCPFX";
 
             // Act
